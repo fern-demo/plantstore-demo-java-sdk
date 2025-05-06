@@ -1,8 +1,8 @@
-# Bloomberg Java Library
+# Plantstore Java Library
 
-[![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=Bloomberg%2FJava)
+[![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=Plantstore%2FJava)
 
-The Bloomberg Java library provides convenient access to the Bloomberg API from Java.
+The Plantstore Java library provides convenient access to the Plantstore API from Java.
 
 ## Usage
 
@@ -11,12 +11,12 @@ Instantiate and use the client with the following:
 ```java
 package com.example.usage;
 
-import com.bloomberg.api.BloombergApiClient;
-import com.bloomberg.api.resources.imdb.types.CreateMovieRequest;
+import com.plantstore.api.PlantstoreApiClient;
+import com.plantstore.api.resources.imdb.types.CreateMovieRequest;
 
 public class Example {
     public static void main(String[] args) {
-        BloombergApiClient client = BloombergApiClient
+        PlantstoreApiClient client = PlantstoreApiClient
             .builder()
             .build();
 
@@ -36,9 +36,9 @@ public class Example {
 You can set a custom base URL when constructing the client.
 
 ```java
-import com.bloomberg.api.BloombergApiClient;
+import com.plantstore.api.PlantstoreApiClient;
 
-BloombergApiClient client = BloombergApiClient
+PlantstoreApiClient client = PlantstoreApiClient
     .builder()
     .url("https://example.com")
     .build();
@@ -49,11 +49,11 @@ BloombergApiClient client = BloombergApiClient
 When the API returns a non-success status code (4xx or 5xx response), an API exception will be thrown.
 
 ```java
-import com.bloomberg.api.core.BloombergApiApiException;
+import com.plantstore.api.core.PlantstoreApiApiException;
 
 try {
     client.imdb().createMovie(...);
-} catch (BloombergApiApiException e) {
+} catch (PlantstoreApiApiException e) {
     // Do something with the API exception...
 }
 ```
@@ -66,12 +66,12 @@ This SDK is built to work with any instance of `OkHttpClient`. By default, if no
 However, you can pass your own client like so:
 
 ```java
-import com.bloomberg.api.BloombergApiClient;
+import com.plantstore.api.PlantstoreApiClient;
 import okhttp3.OkHttpClient;
 
 OkHttpClient customClient = ...;
 
-BloombergApiClient client = BloombergApiClient
+PlantstoreApiClient client = PlantstoreApiClient
     .builder()
     .httpClient(customClient)
     .build();
@@ -92,7 +92,7 @@ A request is deemed retriable when any of the following HTTP status codes is ret
 Use the `maxRetries` request option to configure this behavior.
 
 ```java
-import com.bloomberg.api.core.RequestOptions;
+import com.plantstore.api.core.RequestOptions;
 
 client.imdb().createMovie(
     ...,
@@ -108,11 +108,11 @@ client.imdb().createMovie(
 The SDK defaults to a 60 second timeout. You can configure this with a timeout option at the client or request level.
 
 ```java
-import com.bloomberg.api.BloombergApiClient;
-import com.bloomberg.api.core.RequestOptions;
+import com.plantstore.api.PlantstoreApiClient;
+import com.plantstore.api.core.RequestOptions;
 
 // Client level
-BloombergApiClient client = BloombergApiClient
+PlantstoreApiClient client = PlantstoreApiClient
     .builder()
     .timeout(10)
     .build();
