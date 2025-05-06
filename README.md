@@ -1,0 +1,1 @@
+# plantstore-demo-fern-config
